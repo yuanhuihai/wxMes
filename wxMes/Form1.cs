@@ -149,6 +149,9 @@ namespace wxMes
 
         }
 
-   
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
