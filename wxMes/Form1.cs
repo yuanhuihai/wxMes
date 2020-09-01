@@ -37,7 +37,7 @@ namespace wxMes
 
         }
 
-        //每隔5分钟获取一次PLC的信息
+        //每隔10分钟获取一次PLC的信息
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Interval = 600000;//执行间隔时间,单位为毫秒;此时时间间隔为60秒   
@@ -76,19 +76,18 @@ namespace wxMes
 
   
 
-        //每镉5s发布一次消息
+        //每镉10分钟发布一次消息
         private void timer2_Tick(object sender, EventArgs e)
         {
             
 
-            timer2.Interval = 300000;
+            timer2.Interval = 600000;
 
-            string sqlDel = "delete from oveninfo";
-            sqlOperate.MySqlCom(sqlDel);
+          
 
             string currentTime = DateTime.Now.ToString();
 
-            string sql = "insert into oveninfo values('"+currentTime+"','" + label19.Text + "','" + label25.Text + "','" + label18.Text + "','" + label24.Text + "','" + label17.Text + "','" + label23.Text + "','" + label16.Text + "','" + label22.Text + "','" + label15.Text + "','" + label21.Text + "','" + label14.Text + "','" + label20.Text + "','" + label13.Text + "','" + label5.Text + "')";
+            string sql = "insert into oveninfo (DA,ED1TNV,ED1CHIMNEY,ED2TNV,ED2CHIMNEY,PVCTNV,PVCCHIMNEY,PR1TNV,PR1CHIMNEY,PR2TNV,PR2CHIMNEY,TC1TNV,TC1CHIMNEY,TC2TNV,TC2CHIMNEY) values('"+currentTime+"','" + label19.Text + "','" + label25.Text + "','" + label18.Text + "','" + label24.Text + "','" + label17.Text + "','" + label23.Text + "','" + label16.Text + "','" + label22.Text + "','" + label15.Text + "','" + label21.Text + "','" + label14.Text + "','" + label20.Text + "','" + label13.Text + "','" + label5.Text + "')";
 
           
             sqlOperate.MySqlCom(sql);
@@ -149,9 +148,6 @@ namespace wxMes
 
         }
 
-        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
+     
     }
 }
