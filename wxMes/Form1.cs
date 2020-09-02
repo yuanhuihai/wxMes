@@ -44,29 +44,35 @@ namespace wxMes
             timer1.Interval = 600000;//执行间隔时间,单位为毫秒;此时时间间隔为60秒   
 
 
-            label19.Text = Convert.ToString(operatePlc.readPlcDbdValues("10.228.140.46", 0, 3, 92, 0));
-            label18.Text = Convert.ToString(operatePlc.readPlcDbdValues("10.228.140.54", 0, 3, 92, 0));
-            label17.Text = Convert.ToString(operatePlc.readPlcDbdValues("10.228.140.98", 0, 3, 92, 0));
-            label16.Text = Convert.ToString(operatePlc.readPlcDbdValues("10.228.141.38", 0, 3, 92, 0));
-            label15.Text = Convert.ToString(operatePlc.readPlcDbdValues("10.228.141.46", 0, 3, 92, 0));
-            label14.Text = Convert.ToString(operatePlc.readPlcDbdValues("10.228.141.82", 0, 3, 92, 0));
-            label13.Text = Convert.ToString(operatePlc.readPlcDbdValues("10.228.141.126", 0, 3, 92, 0));
-            label25.Text = System.Convert.ToString(operatePlc.readPlcDbwValue("10.228.140.46", 0, 3, 294, 2));
-            label24.Text = System.Convert.ToString(operatePlc.readPlcDbwValue("10.228.140.54", 0, 3, 294, 2));
+
+    
 
 
-            label23.Text = System.Convert.ToString(operatePlc.readPlcDbwValue("10.228.140.98", 0, 3, 294, 2));
+
+                label19.Text = Convert.ToString(operatePlc.readPlcDbdValues("10.228.140.46", 0, 3, 92, 0));
+                label18.Text = Convert.ToString(operatePlc.readPlcDbdValues("10.228.140.54", 0, 3, 92, 0));
+                label17.Text = Convert.ToString(operatePlc.readPlcDbdValues("10.228.140.98", 0, 3, 92, 0));
+                label16.Text = Convert.ToString(operatePlc.readPlcDbdValues("10.228.141.38", 0, 3, 92, 0));
+                label15.Text = Convert.ToString(operatePlc.readPlcDbdValues("10.228.141.46", 0, 3, 92, 0));
+                label14.Text = Convert.ToString(operatePlc.readPlcDbdValues("10.228.141.82", 0, 3, 92, 0));
+                label13.Text = Convert.ToString(operatePlc.readPlcDbdValues("10.228.141.126", 0, 3, 92, 0));
+                label25.Text = System.Convert.ToString(operatePlc.readPlcDbwValue("10.228.140.46", 0, 3, 294, 2));
+                label24.Text = System.Convert.ToString(operatePlc.readPlcDbwValue("10.228.140.54", 0, 3, 294, 2));
 
 
-            label22.Text = System.Convert.ToString(operatePlc.readPlcDbwValue("10.228.141.38", 0, 3, 294, 2));
+                label23.Text = System.Convert.ToString(operatePlc.readPlcDbwValue("10.228.140.98", 0, 3, 294, 2));
 
 
-            label21.Text = System.Convert.ToString(operatePlc.readPlcDbwValue("10.228.141.46", 0, 3, 294, 2));
+                label22.Text = System.Convert.ToString(operatePlc.readPlcDbwValue("10.228.141.38", 0, 3, 294, 2));
 
-            label20.Text = System.Convert.ToString(operatePlc.readPlcDbwValue("10.228.141.82", 0, 3, 294, 2));
 
-            label5.Text = System.Convert.ToString(operatePlc.readPlcDbwValue("10.228.141.126", 0, 3, 294, 2));
+                label21.Text = System.Convert.ToString(operatePlc.readPlcDbwValue("10.228.141.46", 0, 3, 294, 2));
 
+                label20.Text = System.Convert.ToString(operatePlc.readPlcDbwValue("10.228.141.82", 0, 3, 294, 2));
+
+                label5.Text = System.Convert.ToString(operatePlc.readPlcDbwValue("10.228.141.126", 0, 3, 294, 2));
+         
+      
         }
 
 
@@ -86,8 +92,35 @@ namespace wxMes
 
             string sql = "insert into oveninfo (DA,ED1TNV,ED1CHIMNEY,ED2TNV,ED2CHIMNEY,PVCTNV,PVCCHIMNEY,PR1TNV,PR1CHIMNEY,PR2TNV,PR2CHIMNEY,TC1TNV,TC1CHIMNEY,TC2TNV,TC2CHIMNEY) values('"+currentTime+"','" + label19.Text + "','" + label25.Text + "','" + label18.Text + "','" + label24.Text + "','" + label17.Text + "','" + label23.Text + "','" + label16.Text + "','" + label22.Text + "','" + label15.Text + "','" + label21.Text + "','" + label14.Text + "','" + label20.Text + "','" + label13.Text + "','" + label5.Text + "')";
 
-          
-            sqlOperate.MySqlCom(sql);
+
+            //检测网络连接状态，网络连接成功后，写入数据
+
+            System.Net.NetworkInformation.Ping ping = new System.Net.NetworkInformation.Ping();
+
+            try
+            {
+                   System.Net.NetworkInformation.PingReply pingStatus =ping.Send(IPAddress.Parse("202.108.22.5"), 1000);//ping 百度的IP地址
+                if (pingStatus.Status == System.Net.NetworkInformation.IPStatus.Success)
+                {
+                    sqlOperate.MySqlCom(sql);
+                    listInfo.Items.Add(DateTime.Now.ToString() + "数据写入阿里云Mysql数据库成功！");
+                }
+                else
+                {
+                    listInfo.Items.Add(DateTime.Now.ToString() + "外网连接失败");
+                }
+            }
+            catch
+            {
+                listInfo.Items.Add(DateTime.Now.ToString() + "网络连接失败");
+            }
+            finally
+            {
+
+                
+            }
+
+           
         }
 
 
@@ -144,24 +177,8 @@ namespace wxMes
 
         }
 
-     
-        //检测网络连接状态
-        public void internetStatus()
-        {
-            System.Net.NetworkInformation.Ping ping = new System.Net.NetworkInformation.Ping();
+ 
 
-            System.Net.NetworkInformation.PingReply pingStatus =
-                ping.Send(IPAddress.Parse("208.69.34.231"), 1000);
-
-            if (pingStatus.Status == System.Net.NetworkInformation.IPStatus.Success)
-            {
-                MessageBox.Show("ok");
-            }
-            else
-            {
-                MessageBox.Show("not ok");
-            }
-        }
 
         
     }

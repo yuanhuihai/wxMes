@@ -69,6 +69,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listInfo = new System.Windows.Forms.ListBox();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -396,7 +397,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1190, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(850, 24);
             this.menuStrip1.TabIndex = 45;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -406,11 +407,20 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
+            // listInfo
+            // 
+            this.listInfo.FormattingEnabled = true;
+            this.listInfo.Location = new System.Drawing.Point(438, 48);
+            this.listInfo.Name = "listInfo";
+            this.listInfo.Size = new System.Drawing.Size(381, 212);
+            this.listInfo.TabIndex = 46;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1190, 521);
+            this.ClientSize = new System.Drawing.Size(850, 521);
+            this.Controls.Add(this.listInfo);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label20);
@@ -496,6 +506,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ListBox listInfo;
     }
 }
 
