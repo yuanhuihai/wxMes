@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -50,11 +51,7 @@ namespace wxMes
             label15.Text = Convert.ToString(operatePlc.readPlcDbdValues("10.228.141.46", 0, 3, 92, 0));
             label14.Text = Convert.ToString(operatePlc.readPlcDbdValues("10.228.141.82", 0, 3, 92, 0));
             label13.Text = Convert.ToString(operatePlc.readPlcDbdValues("10.228.141.126", 0, 3, 92, 0));
-
-
             label25.Text = System.Convert.ToString(operatePlc.readPlcDbwValue("10.228.140.46", 0, 3, 294, 2));
-
-
             label24.Text = System.Convert.ToString(operatePlc.readPlcDbwValue("10.228.140.54", 0, 3, 294, 2));
 
 
@@ -127,7 +124,6 @@ namespace wxMes
 
         }
 
-        //托盘
         private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)//判断鼠标的按键
@@ -149,5 +145,24 @@ namespace wxMes
         }
 
      
+        //检测网络连接状态
+        public void internetStatus()
+        {
+            System.Net.NetworkInformation.Ping ping = new System.Net.NetworkInformation.Ping();
+
+            System.Net.NetworkInformation.PingReply pingStatus =
+                ping.Send(IPAddress.Parse("208.69.34.231"), 1000);
+
+            if (pingStatus.Status == System.Net.NetworkInformation.IPStatus.Success)
+            {
+                MessageBox.Show("ok");
+            }
+            else
+            {
+                MessageBox.Show("not ok");
+            }
+        }
+
+        
     }
 }
