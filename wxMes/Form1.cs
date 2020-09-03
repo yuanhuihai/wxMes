@@ -97,28 +97,25 @@ namespace wxMes
 
             System.Net.NetworkInformation.Ping ping = new System.Net.NetworkInformation.Ping();
 
-            try
-            {
+          
+            
                    System.Net.NetworkInformation.PingReply pingStatus =ping.Send(IPAddress.Parse("202.108.22.5"), 1000);//ping 百度的IP地址
-                if (pingStatus.Status == System.Net.NetworkInformation.IPStatus.Success)
-                {
-                    sqlOperate.MySqlCom(sql);
-                    listInfo.Items.Add(DateTime.Now.ToString() + "数据写入阿里云Mysql数据库成功！");
-                }
-                else
-                {
-                    listInfo.Items.Add(DateTime.Now.ToString() + "外网连接失败");
-                }
-            }
-            catch
+            if (pingStatus.Status == System.Net.NetworkInformation.IPStatus.Success)
             {
-                listInfo.Items.Add(DateTime.Now.ToString() + "网络连接失败");
-            }
-            finally
-            {
+                sqlOperate.MySqlCom(sql);
+                listInfo.Items.Add(DateTime.Now.ToString() + "数据写入阿里云Mysql数据库成功！");
+                if (listInfo.Items.Count > 50)
+                {
 
+                    listInfo.Items.Clear();
                 
+                }
             }
+            else
+            {
+                listInfo.Items.Add(DateTime.Now.ToString() + "外网连接失败");
+            }
+ 
 
            
         }
