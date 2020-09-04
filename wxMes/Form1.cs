@@ -103,17 +103,18 @@ namespace wxMes
             if (pingStatus.Status == System.Net.NetworkInformation.IPStatus.Success)
             {
                 sqlOperate.MySqlCom(sql);
-                listInfo.Items.Add(DateTime.Now.ToString() + "数据写入阿里云Mysql数据库成功！");
-                if (listInfo.Items.Count > 50)
-                {
-
-                    listInfo.Items.Clear();
-                
-                }
+               
+            
             }
             else
             {
                 listInfo.Items.Add(DateTime.Now.ToString() + "外网连接失败");
+                if (listInfo.Items.Count > 50)
+                {
+
+                    listInfo.Items.Clear();
+
+                }
             }
  
 
