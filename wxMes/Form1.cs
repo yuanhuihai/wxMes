@@ -220,7 +220,7 @@ namespace wxMes
         {
 
 
-            if (DateTime.Now.Hour == Convert.ToInt32(23) && DateTime.Now.Minute == Convert.ToInt32(59) && DateTime.Now.Second == Convert.ToInt32(00))
+            if (DateTime.Now.Hour == Convert.ToInt32(23) && DateTime.Now.Minute == Convert.ToInt32(57) && DateTime.Now.Second == Convert.ToInt32(00))
             {
                 string riqi = DateTime.Now.ToString("yyyy-MM-dd");
 

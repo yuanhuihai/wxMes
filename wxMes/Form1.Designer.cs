@@ -71,18 +71,18 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listInfo = new System.Windows.Forms.ListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -239,7 +239,7 @@
             // 
             this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "烘干炉";
+            this.notifyIcon1.Text = "车间数据-->阿里云";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
             // 
@@ -454,95 +454,14 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "当日产量";
             // 
-            // label1
+            // label40
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "日期";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(99, 26);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "一线";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(165, 26);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "二线";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(230, 26);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(31, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "三线";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(280, 26);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(31, 13);
-            this.label33.TabIndex = 4;
-            this.label33.Text = "四线";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(344, 26);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(31, 13);
-            this.label34.TabIndex = 5;
-            this.label34.Text = "产量";
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(20, 60);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(10, 13);
-            this.label35.TabIndex = 6;
-            this.label35.Text = "-";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(99, 60);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(10, 13);
-            this.label36.TabIndex = 7;
-            this.label36.Text = "-";
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(165, 60);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(10, 13);
-            this.label37.TabIndex = 8;
-            this.label37.Text = "-";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(230, 60);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(10, 13);
-            this.label38.TabIndex = 9;
-            this.label38.Text = "-";
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(344, 60);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(10, 13);
+            this.label40.TabIndex = 11;
+            this.label40.Text = "-";
             // 
             // label39
             // 
@@ -553,14 +472,95 @@
             this.label39.TabIndex = 10;
             this.label39.Text = "-";
             // 
-            // label40
+            // label38
             // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(344, 60);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(10, 13);
-            this.label40.TabIndex = 11;
-            this.label40.Text = "-";
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(230, 60);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(10, 13);
+            this.label38.TabIndex = 9;
+            this.label38.Text = "-";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(165, 60);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(10, 13);
+            this.label37.TabIndex = 8;
+            this.label37.Text = "-";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(99, 60);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(10, 13);
+            this.label36.TabIndex = 7;
+            this.label36.Text = "-";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(20, 60);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(10, 13);
+            this.label35.TabIndex = 6;
+            this.label35.Text = "-";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(344, 26);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(31, 13);
+            this.label34.TabIndex = 5;
+            this.label34.Text = "产量";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(280, 26);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(31, 13);
+            this.label33.TabIndex = 4;
+            this.label33.Text = "四线";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(230, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(31, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "三线";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(165, 26);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(31, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "二线";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(99, 26);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(31, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "一线";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(20, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "日期";
             // 
             // timer3
             // 
