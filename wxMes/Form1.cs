@@ -49,9 +49,7 @@ namespace wxMes
             mySqlHelp sqlOperate = new mySqlHelp();
 
             oracleOperate oraOperate = new oracleOperate();
-
-        public  string riqi = DateTime.Now.ToString("yyyy-MM-dd");
-       
+        
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -138,7 +136,7 @@ namespace wxMes
         private void timer2_Tick(object sender, EventArgs e)
             {
             timer2.Interval = 120000;
-
+            string riqi = DateTime.Now.ToString("yyyy-MM-dd");
             LineOne();
             LineTwo();
             LineThree();
@@ -238,7 +236,7 @@ namespace wxMes
         private void dataToAliMysql()
         {
 
-
+            string riqi = DateTime.Now.ToString("yyyy-MM-dd");
             if (DateTime.Now.Hour == Convert.ToInt32(23) && DateTime.Now.Minute == Convert.ToInt32(59) && DateTime.Now.Second == Convert.ToInt32(00))
             {
                       
