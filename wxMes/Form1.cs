@@ -251,7 +251,7 @@ namespace wxMes
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
-            this.WindowState = FormWindowState.Minimized;
+            this.Hide();
         }
         private void exitMenuItem_Click(object sender, EventArgs e)
         {
