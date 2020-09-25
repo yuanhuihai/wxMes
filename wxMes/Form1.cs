@@ -48,7 +48,7 @@ namespace wxMes
 
             mySqlHelp sqlOperate = new mySqlHelp();
 
-            oracleOperate oraOperate = new oracleOperate();
+            oracleDatabaseOperate oraOperate = new oracleDatabaseOperate();
         
 
         private void Form1_Load(object sender, EventArgs e)
@@ -56,8 +56,9 @@ namespace wxMes
             timer1.Start();//获取PLC信息
             timer2.Start();//信息发送给阿里云
             timer3.Start();//每1s触发一次
-        
 
+            //打开数据库连接
+            oraOperate.connOpen();
         }
 
 
@@ -153,21 +154,11 @@ namespace wxMes
         {
 
 
-            string sql = "select * from YM_FINISH_INFO where DT='合计'  ";
-
-            OracleConnection con = new OracleConnection("Data Source=10.228.141.253/ORCL;User Id=JSL;Password=fawccr");
-
-            OracleCommand com = new OracleCommand(sql, con);
-
-            con.Open();
-    
-            OracleDataReader read = com.ExecuteReader();
+            string sql = "select * from YM_FINISH_INFO where DT='合计'  ";  
+            OracleDataReader read = oraOperate.OrcGetRead(sql);
             read.Read();
             label36.Text = read["TOTAL"].ToString();
-            con.Close();
-
-
-
+       
         }
 
         private void LineTwo()
@@ -176,17 +167,10 @@ namespace wxMes
 
             string sql = "select * from YM_FINISH2_INFO where DT='合计'  ";
 
-            OracleConnection con = new OracleConnection("Data Source=10.228.141.253/ORCL;User Id=JSL;Password=fawccr");
-
-            OracleCommand com = new OracleCommand(sql, con);
-
-            con.Open();
-
-            OracleDataReader read = com.ExecuteReader();
+            OracleDataReader read = oraOperate.OrcGetRead(sql);
             read.Read();
             label37.Text = read["TOTAL"].ToString();
-            con.Close();
-
+    
 
 
         }
@@ -196,17 +180,10 @@ namespace wxMes
 
 
             string sql = "select * from YM_FINISH3_INFO where DT='合计'  ";
-
-            OracleConnection con = new OracleConnection("Data Source=10.228.141.253/ORCL;User Id=JSL;Password=fawccr");
-
-            OracleCommand com = new OracleCommand(sql, con);
-
-            con.Open();
-
-            OracleDataReader read = com.ExecuteReader();
+            OracleDataReader read = oraOperate.OrcGetRead(sql);
             read.Read();
             label38.Text = read["TOTAL"].ToString();
-            con.Close();
+ 
 
 
 
@@ -217,16 +194,10 @@ namespace wxMes
 
             string sql = "select * from YM_FINISH4_INFO where DT='合计'  ";
 
-            OracleConnection con = new OracleConnection("Data Source=10.228.141.253/ORCL;User Id=JSL;Password=fawccr");
-
-            OracleCommand com = new OracleCommand(sql, con);
-
-            con.Open();
-
-            OracleDataReader read = com.ExecuteReader();
+            OracleDataReader read = oraOperate.OrcGetRead(sql);
             read.Read();
             label39.Text = read["TOTAL"].ToString();
-            con.Close();
+     
 
 
 
