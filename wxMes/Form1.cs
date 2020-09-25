@@ -59,6 +59,7 @@ namespace wxMes
 
             //打开数据库连接
             oraOperate.connOpen();
+            sqlOperate.connOpen();
         }
 
 
