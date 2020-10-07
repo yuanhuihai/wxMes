@@ -101,26 +101,27 @@ namespace wxMes
             try
             {
 
-                System.Net.NetworkInformation.Ping ping = new System.Net.NetworkInformation.Ping();
+                //System.Net.NetworkInformation.Ping ping = new System.Net.NetworkInformation.Ping();
 
-                System.Net.NetworkInformation.PingReply pingStatus = ping.Send(IPAddress.Parse("202.108.22.5"), 1000);//ping 百度的IP地址
+                //System.Net.NetworkInformation.PingReply pingStatus = ping.Send(IPAddress.Parse("202.108.22.5"), 1000);//ping 百度的IP地址
 
-                if (pingStatus.Status == System.Net.NetworkInformation.IPStatus.Success)
-                {
-                    sqlOperate.MySqlCom(sql);
+                //if (pingStatus.Status == System.Net.NetworkInformation.IPStatus.Success)
+                //{
+                //    sqlOperate.MySqlCom(sql);
 
 
-                }
-                else
-                {
-                    listInfo.Items.Add(DateTime.Now.ToString() + "ping外网连接失败");
-                    if (listInfo.Items.Count > 50)
-                    {
+                //}
+                //else
+                //{
+                //    listInfo.Items.Add(DateTime.Now.ToString() + "ping外网连接失败");
+                //    if (listInfo.Items.Count > 50)
+                //    {
 
-                        listInfo.Items.Clear();
+                //        listInfo.Items.Clear();
 
-                    }
-                }
+                //    }
+                //}
+                sqlOperate.MySqlCom(sql);//20201007修改
             }
             catch
             {
