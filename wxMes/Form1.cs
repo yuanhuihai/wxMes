@@ -98,8 +98,8 @@ namespace wxMes
 
 
             //检测网络连接状态，网络连接成功后，写入数据
-            try
-            {
+            //try
+            //{
 
                 //System.Net.NetworkInformation.Ping ping = new System.Net.NetworkInformation.Ping();
 
@@ -122,11 +122,11 @@ namespace wxMes
                 //    }
                 //}
                 sqlOperate.MySqlCom(sql);//20201007修改
-            }
-            catch
-            {
-                listInfo.Items.Add(DateTime.Now.ToString() + "catch外网连接失败");
-            }
+            //}
+            //catch
+            //{
+            //    listInfo.Items.Add(DateTime.Now.ToString() + "catch外网连接失败");
+            //}
 
 
             #endregion
