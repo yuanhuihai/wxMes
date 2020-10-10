@@ -21,7 +21,7 @@ using System.Threading;
 #region
 /*
 
- * timer2定时时间120s
+
  * timer3定时时间1s
  * 
  * 
@@ -64,7 +64,7 @@ namespace wxMes
         {
             //打开数据库连接
             oraOperate.connOpen();
-            sqlOperate.connOpen();
+ 
 
             Thread tenMinute = new Thread(new ThreadStart(tenMinuteUpdate));
             tenMinute.Start();
@@ -294,8 +294,8 @@ namespace wxMes
                 rateone = (double)getTotalOkCarNumone() / getTotalCarNumone();
                 ratetwo = (double)getTotalOkCarNumtwo() / getTotalCarNumtwo();
 
-                string sql = "insert into finalcarinfo values('" +getTotalCarNum() + "','" + ratetotal.ToString("0.00%") + "','" + getTotalCarNumone() + "','" + rateone.ToString("0.00%") + "','" + getTotalCarNumtwo() + "','" + ratetwo.ToString("0.00%") + "')";
-            
+                string sql = "insert into finalcarinfo values('" + DateTime.Now.ToString() + "','" + getTotalCarNum() + "','" + ratetotal.ToString("0.00%") + "','" + getTotalCarNumone() + "','" + rateone.ToString("0.00%") + "','" + getTotalCarNumtwo() + "','" + ratetwo.ToString("0.00%") + "')";
+                string sqldel = "delete from finalcarinfo";
 
 
                 //检测网络连接状态，网络连接成功后，写入数据
@@ -306,7 +306,7 @@ namespace wxMes
 
                 if (pingStatus.Status == System.Net.NetworkInformation.IPStatus.Success)
                 {
-              
+                    sqlOperate.MySqlCom(sqldel);
                     sqlOperate.MySqlCom(sql);
 
                 }
@@ -331,7 +331,7 @@ namespace wxMes
         {
            
                 string sql = "select * from V_MQ WHERE D='" + DateTime.Now.ToString("yyyy-MM-dd") + "' AND STAT='mq1'";
-
+              
                 int a = oraOperate.OrcGetNums(sql);
                 int b = 0;
                 int onelinetimes = 0;
@@ -369,18 +369,19 @@ namespace wxMes
 
 
                 string sqll = "insert into ccrateinfo (LINEPOS,LINENUM,LINETIMES,LINERATE) values ('one','" + a+ "','" +onelinetimes + "','" + a/onelinetimes+"')";
-
+                string sqldel = "delete from ccrateinfo where LINEPOS='one'";
 
                 //检测网络连接状态，网络连接成功后，写入数据
 
-                System.Net.NetworkInformation.Ping ping = new System.Net.NetworkInformation.Ping();
+            System.Net.NetworkInformation.Ping ping = new System.Net.NetworkInformation.Ping();
 
                 System.Net.NetworkInformation.PingReply pingStatus = ping.Send(IPAddress.Parse("202.108.22.5"), 1000);//ping 百度的IP地址
 
                 if (pingStatus.Status == System.Net.NetworkInformation.IPStatus.Success)
                 {
 
-                    sqlOperate.MySqlCom(sqll);
+                sqlOperate.MySqlCom(sqldel);
+                sqlOperate.MySqlCom(sqll);
 
                 }
 
@@ -436,7 +437,7 @@ namespace wxMes
                 }
 
                 string sqll = "insert into ccrateinfo (LINEPOS,LINENUM,LINETIMES,LINERATE) values('two','" + a + "','" + twolinetimes + "','" + a / twolinetimes + "')";
-            
+            string sqldel = "delete from ccrateinfo where LINEPOS='two'";
 
             //检测网络连接状态，网络连接成功后，写入数据
 
@@ -446,7 +447,7 @@ namespace wxMes
 
             if (pingStatus.Status == System.Net.NetworkInformation.IPStatus.Success)
             {
-
+                sqlOperate.MySqlCom(sqldel);
                 sqlOperate.MySqlCom(sqll);
 
             }
