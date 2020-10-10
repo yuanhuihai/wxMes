@@ -26,7 +26,7 @@
     <InstallUrl>http://localhost/vtMes/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>23</ApplicationRevision>
+    <ApplicationRevision>27</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -133,12 +133,6 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Help.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Help.Designer.cs">
-      <DependentUpon>Help.cs</DependentUpon>
     </Compile>
     <Compile Include="mySqlOperate.cs" />
     <Compile Include="Program.cs" />

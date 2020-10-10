@@ -18,6 +18,11 @@ namespace mySqlOperate
         {
             conn.Open();
         }
+
+        public void connClose()
+        {
+            conn.Close();
+        }
         //执行sql语句 2020-08-18
         public void MySqlCom(string sqlstr)
         {
