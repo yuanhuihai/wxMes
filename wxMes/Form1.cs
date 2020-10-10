@@ -64,13 +64,20 @@ namespace wxMes
         {
             //打开数据库连接
             oraOperate.connOpen();
- 
-
-            Thread tenMinute = new Thread(new ThreadStart(tenMinuteUpdate));
-            tenMinute.Start();
-
+   
             Thread carRate = new Thread(new ThreadStart(carRateToMysql));      
             carRate.Start();
+
+            Thread lineone = new Thread(new ThreadStart(getColorOneInfo));
+            lineone.Start();
+
+            Thread linetwo = new Thread(new ThreadStart(getColorTwoInfo));
+            linetwo.Start();
+
+            Thread ovenInfo = new Thread(new ThreadStart(ovenInfoToAliMysql));
+            ovenInfo.Start();
+
+
 
     
 
@@ -146,27 +153,15 @@ namespace wxMes
 
 
 
-        #region 10分钟上传一次数据
-
-        private void tenMinuteUpdate()
-        {
-            while (true)
-            {
-                getColorOneInfo();
-                getColorTwoInfo();
-                ovenInfoToAliMysql();
-                Thread.Sleep(600000);
-
-            }
-
-        }
-        #endregion
+ 
 
         #region 20201010 获取烘干炉温度信息
 
         private void ovenInfoToAliMysql()
         {
-           
+            while (true)
+            {
+                Thread.Sleep(600000);
                 chimneyTem[0] = Convert.ToString(operatePlc.readPlcDbdValues("10.228.140.46", 0, 3, 92, 0));
                 chimneyTem[1] = Convert.ToString(operatePlc.readPlcDbdValues("10.228.140.54", 0, 3, 92, 0));
                 chimneyTem[2] = Convert.ToString(operatePlc.readPlcDbdValues("10.228.140.98", 0, 3, 92, 0));
@@ -198,10 +193,12 @@ namespace wxMes
 
                 }
 
+            }
 
-     
 
-            
+
+
+
 
 
         }
@@ -329,9 +326,10 @@ namespace wxMes
 
         private void getColorOneInfo()
         {
-           
+            while (true)
+            {
                 string sql = "select * from V_MQ WHERE D='" + DateTime.Now.ToString("yyyy-MM-dd") + "' AND STAT='mq1'";
-              
+
                 int a = oraOperate.OrcGetNums(sql);
                 int b = 0;
                 int onelinetimes = 0;
@@ -368,22 +366,27 @@ namespace wxMes
 
 
 
-                string sqll = "insert into ccrateinfo (LINEPOS,LINENUM,LINETIMES,LINERATE) values ('one','" + a+ "','" +onelinetimes + "','" + a/onelinetimes+"')";
+                string sqll = "insert into ccrateinfo (LINEPOS,LINENUM,LINETIMES,LINERATE) values ('one','" + a + "','" + onelinetimes + "','" + a / onelinetimes + "')";
                 string sqldel = "delete from ccrateinfo where LINEPOS='one'";
 
                 //检测网络连接状态，网络连接成功后，写入数据
 
-            System.Net.NetworkInformation.Ping ping = new System.Net.NetworkInformation.Ping();
+                System.Net.NetworkInformation.Ping ping = new System.Net.NetworkInformation.Ping();
 
                 System.Net.NetworkInformation.PingReply pingStatus = ping.Send(IPAddress.Parse("202.108.22.5"), 1000);//ping 百度的IP地址
 
                 if (pingStatus.Status == System.Net.NetworkInformation.IPStatus.Success)
                 {
 
-                sqlOperate.MySqlCom(sqldel);
-                sqlOperate.MySqlCom(sqll);
+                    sqlOperate.MySqlCom(sqldel);
+                    sqlOperate.MySqlCom(sqll);
 
                 }
+
+                Thread.Sleep(240000);
+            }
+           
+               
 
 
             
@@ -399,7 +402,10 @@ namespace wxMes
 
         private void getColorTwoInfo()
         {
-            
+            while (true)
+            {
+                Thread.Sleep(300000);
+
                 string sql = "select * from V_MQ WHERE D='" + DateTime.Now.ToString("yyyy-MM-dd") + "' AND STAT='mq2'";
 
                 int a = oraOperate.OrcGetNums(sql);
@@ -437,18 +443,20 @@ namespace wxMes
                 }
 
                 string sqll = "insert into ccrateinfo (LINEPOS,LINENUM,LINETIMES,LINERATE) values('two','" + a + "','" + twolinetimes + "','" + a / twolinetimes + "')";
-            string sqldel = "delete from ccrateinfo where LINEPOS='two'";
+                string sqldel = "delete from ccrateinfo where LINEPOS='two'";
 
-            //检测网络连接状态，网络连接成功后，写入数据
+                //检测网络连接状态，网络连接成功后，写入数据
 
-            System.Net.NetworkInformation.Ping ping = new System.Net.NetworkInformation.Ping();
+                System.Net.NetworkInformation.Ping ping = new System.Net.NetworkInformation.Ping();
 
-            System.Net.NetworkInformation.PingReply pingStatus = ping.Send(IPAddress.Parse("202.108.22.5"), 1000);//ping 百度的IP地址
+                System.Net.NetworkInformation.PingReply pingStatus = ping.Send(IPAddress.Parse("202.108.22.5"), 1000);//ping 百度的IP地址
 
-            if (pingStatus.Status == System.Net.NetworkInformation.IPStatus.Success)
-            {
-                sqlOperate.MySqlCom(sqldel);
-                sqlOperate.MySqlCom(sqll);
+                if (pingStatus.Status == System.Net.NetworkInformation.IPStatus.Success)
+                {
+                    sqlOperate.MySqlCom(sqldel);
+                    sqlOperate.MySqlCom(sqll);
+
+                }
 
             }
 
